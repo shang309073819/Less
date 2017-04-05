@@ -1,0 +1,34 @@
+@green: #801f77;
+@baise: white;
+
+header, footer {
+    background: @green;
+    h1 {
+        color: @baise;
+    }
+}
+
+//作为选择器和属性名的变量
+@kuandu: width;
+.@{kuandu} {
+        @{kuandu}: 150px
+}
+
+//作为URL的变量
+@imgurl: "https://www.baidu.com/img/";
+header {
+    background: @green url("@{imgurl}bdlogo.png");
+    height: 500px;
+}
+
+//在定义一个变量两次时，只会使用最后定义的变量，Less会从当前作用域向上搜索。
+@var: 0;
+.class {
+    @var: 1;
+    .brass {
+        @var: 2;
+        three: @var; //这是的值是2
+        @var: 3;
+    }
+    one: @var; //这是的值是1
+}
